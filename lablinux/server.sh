@@ -3,7 +3,6 @@ if [[ `/usr/bin/id -u` != 0 ]]; then
    exec /usr/bin/sudo $0
 fi
 
-set -e
 
 BASENAME=`dirname $0`
 cd $BASENAME
@@ -53,12 +52,11 @@ sudo apache2ctl restart
 # APT CACHER
 #cp /etc/apt/apt.conf.d/01proxy /etc/apt/apt.conf.d/01proxy.copy
 
-apt-get -y install apt-cacher-ng
+installPackages "apt-cacher-ng"
 echo 'Acquire::http { Proxy "http://localhost:3142"; };' | sudo tee /etc/apt/apt.conf.d/01proxy
 
 #4. Dashboard & manual
-echo "see the apt-cacher-ng dashboard at: <http://localhost:3142/acng-report.html>
- see apt-cacher-ng User Manual at: (right click at the link and open with your browser): <file:///usr/share/doc/apt-cacher-ng/html/index.html>"
+#echo "see the apt-cacher-ng dashboard at: <http://localhost:3142/acng-report.html> see apt-cacher-ng User Manual at: (right click at the link and open with your browser): <file:///usr/share/doc/apt-cacher-ng/html/index.html>"
 
 #5. Import .deb files from the local apt cache
 test -x /var/cache/apt-cacher-ng/_import || sudo mkdir -p -m 2755 /var/cache/apt-cacher-ng/_import
@@ -76,11 +74,7 @@ echo "click \"start import\" at: <http://localhost:3142/acng-report.html>"
 # http://ubuntuforums.org/showthread.php?t=981085
 
 #------------------------------------------
-# WEBMIN
-installPackages "secpanel samba dhcp3-server powernap
-nfs-kernel-server tftpd-hpa"
-#cfengine
-#moodle
+installPackages "secpanel samba isc-dhcp-server powernap nfs-kernel-server tftpd-hpa"
  
 ./server/italc.sh
 ./server/dhcp.sh

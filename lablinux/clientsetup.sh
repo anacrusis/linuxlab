@@ -17,6 +17,8 @@ chmod +x ./linuxsetup.sh
 rm id_rsa.pub || true
 wget "http://$SERVER_IP/~gimnazjum/id_rsa.pub"
 
+echo "root:rootpassword" | chpasswd
+
 mkdir -p ~/.ssh
 
 if ! grep -q -f id_rsa.pub ~/.ssh/authorized_keys ; then
