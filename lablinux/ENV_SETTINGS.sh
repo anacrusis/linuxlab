@@ -1,0 +1,4 @@
+
+export SERVER_IP=192.168.28.1
+
+
