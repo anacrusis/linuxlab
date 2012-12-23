@@ -3,9 +3,10 @@ if [[ `/usr/bin/id -u` != 0 ]]; then
    exec /usr/bin/sudo $0
 fi
 
+#set -e
 
 BASENAME=`dirname $0`
-cd $BASENAME
+cd "$BASENAME"
 pwd
 
 chmod a+x correct_permissions.sh
@@ -26,7 +27,8 @@ fi
 echo "1" > /proc/sys/net/ipv4/ip_forward 
 
 cp ./etc/network/interfaces /etc/network/interfaces
-/etc/init.d/networking restart
+service networking restart
+
 . server/setup_iptables.sh
 iptables-save >/etc/iptables.rules
 

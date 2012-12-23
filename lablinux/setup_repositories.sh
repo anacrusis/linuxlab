@@ -16,6 +16,7 @@ function addrepo-bin() {
 dist_codename="`lsb_release -c -s`"
 
 function installPackages() {
+	echo "Inastall packages $0"
 	install_packages="$@"
 	failed_packages=""
 	for package in $install_packages ; do
