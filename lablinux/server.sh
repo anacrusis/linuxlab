@@ -81,15 +81,15 @@ installPackages "secpanel samba isc-dhcp-server powernap nfs-kernel-server tftpd
 ./server/italc.sh
 ./server/dhcp.sh
 
-cp squid.conf /etc/squid/squid.conf
-/etc/init.d/squid restart
+cp squid.conf /etc/squid3/squid.conf
+restart squid3 
 
 cp dansguardian.conf /etc/dansguardian/
 cp dansguardianf1.conf /etc/dansguardian/
 cp weightedphraselist /etc/dansguardian/lists/
 cat /dev/null > /etc/dansguardian/lists/bannedextensionlist
 cat /dev/null > /etc/dansguardian/lists/bannedmimetypelist
-/etc/init.d/dansguardian restart
+service dansguardian restart
 
 cp ./etc/exports /etc/
 cp ./etc/default/tftpd-hpa /etc/default/
