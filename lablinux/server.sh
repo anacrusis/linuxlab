@@ -89,6 +89,8 @@ cp dansguardianf1.conf /etc/dansguardian/
 cp weightedphraselist /etc/dansguardian/lists/
 cat /dev/null > /etc/dansguardian/lists/bannedextensionlist
 cat /dev/null > /etc/dansguardian/lists/bannedmimetypelist
+mkdir -p /var/log/dansguardian
+chown -R proxy:proxy /var/log/dansguardian
 service dansguardian restart
 
 cp ./etc/exports /etc/
