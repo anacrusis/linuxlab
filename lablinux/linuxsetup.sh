@@ -8,9 +8,6 @@ wget --output-document=/etc/apt/sources.list.d/medibuntu.list http://www.medibun
 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - 
 
 addrepo "http://archive.canonical.com/ubuntu $dist_codename partner"
-addrepo-bin 'http://dl.google.com/linux/deb/ stable non-free'
-addrepo-bin 'http://dl.google.com/linux/earth/deb/ stable main'
-addrepo-bin 'http://dl.google.com/linux/talkplugin/deb/ stable main'
 
 apt-get update
 apt-get -y dist-upgrade
@@ -18,86 +15,41 @@ apt-get -y dist-upgrade
 apt-get -y install openssh-server ntfsprogs
 apt-get -y install debconf-utils wget
 
-cat preseed.cfg | /usr/bin/debconf-set-selections
-
-apt-get -y install sun-java6-jdk sun-java6-plugin
-update-java-alternatives -s java-6-sun
-
-
 install_packages=" 
 aptitude
 screen
 gparted
-libdvdcss2
 non-free-codecs
-google-earth-stable
-nfs-kernel-server
-gsmartcontrol
-faac
-picasa
-google-talkplugin
-scrot italc-client
-smbclient samba smbfs 
+samba 
 p7zip
-xsane
-ardour
-scribus
-hugin
 gimp
-ffmpeg2theora
-fluidsynth 
-fluid-soundfont-gm 
-fluidsynth-dssi 
-tuxguitar 
-tuxguitar-fluidsynth
-mscore
-audacity
-jackd
-kompozer 
-blender 
 build-essential 
 inkscape 
-mencoder 
 bash-completion
 mc
 vim
 kate
 sshfs
-scanssh
-ssh
+openssh-server
 flashplugin-installer 
 wget 
 wine 
 k3b 
 ffmpeg 
-amarok 
 ntfsprogs 
-kwrite 
-adblock-plus 
-ubuntu-edu-tertiary 
-ubuntu-edu-secondary 
-links 
 vlc 
-mplayer 
-wireshark 
-goldendict
-qtoctave
 scilab 
 wxmaxima
 geogebra
-bc
 skype
-cups
-cups-client 
-cups-driver-gutenprint 
 xaralx 
-manpages-pl 
-manpages-pl-dev 
 language-pack-pl 
 language-support-pl 
 language-pack-gnome-pl 
 language-pack-kde-pl
 libreoffice
+openjdk-8-jdk
+openjdk-8-jre
 "
 
 #qcad texlive kile lyx qtcreator thunderbird
@@ -134,7 +86,4 @@ fi
 
 echo "Pakiety zainstalowane."
 
-#aptitude remove -y "~ngnome-games*"
-#aptitude remove -y "~nkdegames*"
 
-#apt-get -y install sun-java6-jdk sun-java6-plugin

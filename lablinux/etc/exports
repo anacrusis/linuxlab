@@ -10,5 +10,5 @@
 #
 
 /tftpboot/ubuntu/ *(ro,async,no_wdelay,insecure_locks,no_subtree_check,no_root_squash,insecure)
-/home/gimnazjum/nfs *(rw,no_root_squash,subtree_check,async,insecure)
+/home/gim/nfs *(rw,no_root_squash,subtree_check,async,insecure)
 
