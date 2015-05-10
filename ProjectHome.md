@@ -1,0 +1,1 @@
+scripts for installing linux lab
